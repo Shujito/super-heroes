@@ -4,6 +4,9 @@ plugins {
 	id 'org.jetbrains.kotlin.kapt'
 }
 
+def dynVersionCode = Integer.parseInt(new Date().format("yyyyMMddHH"))
+def dynVersionName = new Date().format("yyyyMMdd-HHmm")
+
 android {
 	namespace 'org.shujito.evaluation'
 	compileSdk 33
@@ -14,8 +17,8 @@ android {
 		applicationId "org.shujito.evaluation"
 		minSdk 22
 		targetSdk 33
-		versionCode 1
-		versionName "1.0"
+		versionCode dynVersionCode
+		versionName dynVersionName
 		testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 	}
 
