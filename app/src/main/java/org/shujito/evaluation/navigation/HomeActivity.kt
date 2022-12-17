@@ -1,8 +1,9 @@
-package org.shujito.evaluation
+package org.shujito.evaluation.navigation
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import org.shujito.evaluation.R
 import org.shujito.evaluation.databinding.HomeActivityBinding
 
 class HomeActivity : AppCompatActivity() {
