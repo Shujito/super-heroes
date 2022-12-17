@@ -1,4 +1,4 @@
-package org.shujito.evaluation
+package org.shujito.evaluation.heroes.detail
 
 import android.os.Bundle
 import android.view.LayoutInflater

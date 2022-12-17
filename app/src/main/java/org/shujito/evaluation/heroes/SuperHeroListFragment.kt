@@ -1,4 +1,4 @@
-package org.shujito.evaluation
+package org.shujito.evaluation.heroes
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import org.shujito.evaluation.R
 import org.shujito.evaluation.databinding.SuperHeroListFragmentBinding
 
 class SuperHeroListFragment : Fragment() {
@@ -22,8 +23,8 @@ class SuperHeroListFragment : Fragment() {
 		container: ViewGroup?,
 		savedInstanceState: Bundle?
 	): View {
-		this.binding = DataBindingUtil
-			.inflate(inflater, R.layout.super_hero_list_fragment, container, false)
+		this.binding =
+			DataBindingUtil.inflate(inflater, R.layout.super_hero_list_fragment, container, false)
 		return this.binding.getRoot()
 	}
 

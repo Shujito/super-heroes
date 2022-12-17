@@ -1,9 +1,10 @@
-package org.shujito.evaluation
+package org.shujito.evaluation.network
 
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.annotations.Expose
+import org.shujito.evaluation.model.Hero
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET

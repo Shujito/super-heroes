@@ -7,7 +7,7 @@
 
 		<variable
 			name="hero"
-			type="org.shujito.evaluation.Hero" />
+			type="org.shujito.evaluation.model.Hero" />
 	</data>
 
 	<ScrollView

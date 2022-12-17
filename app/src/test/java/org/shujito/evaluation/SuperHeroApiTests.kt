@@ -3,6 +3,7 @@ package org.shujito.evaluation
 import kotlinx.coroutines.runBlocking
 import org.junit.Test
 import org.junit.Assert.*
+import org.shujito.evaluation.network.SuperHeroApi
 
 /**
  * Example local unit test, which will execute on the development machine (host).

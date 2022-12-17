@@ -6,7 +6,7 @@
 	app:startDestination="@id/superHeroListFragment">
 	<fragment
 		android:id="@+id/superHeroListFragment"
-		android:name="org.shujito.evaluation.SuperHeroListFragment"
+		android:name="org.shujito.evaluation.heroes.SuperHeroListFragment"
 		android:label="SuperHeroListFragment"
 		tools:layout="@layout/super_hero_list_fragment">
 		<action
@@ -19,7 +19,7 @@
 	</fragment>
 	<fragment
 		android:id="@+id/superHeroDetailFragment"
-		android:name="org.shujito.evaluation.SuperHeroDetailFragment"
+		android:name="org.shujito.evaluation.heroes.detail.SuperHeroDetailFragment"
 		android:label="SuperHeroDetailFragment"
 		tools:layout="@layout/super_hero_detail_fragment" />
 </navigation>

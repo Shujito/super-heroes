@@ -1,4 +1,4 @@
-package org.shujito.evaluation
+package org.shujito.evaluation.model
 
 import android.graphics.Color
 import android.widget.ImageView
@@ -8,6 +8,7 @@ import com.google.gson.annotations.SerializedName
 import com.squareup.picasso.MemoryPolicy
 import com.squareup.picasso.NetworkPolicy
 import com.squareup.picasso.Picasso
+import org.shujito.evaluation.PicassoCircleTransformation
 
 data class Hero(
 	@Expose val id: String,

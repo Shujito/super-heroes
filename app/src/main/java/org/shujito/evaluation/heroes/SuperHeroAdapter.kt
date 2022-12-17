@@ -1,4 +1,4 @@
-package org.shujito.evaluation
+package org.shujito.evaluation.heroes
 
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +9,9 @@ import androidx.recyclerview.widget.DiffUtil.ItemCallback
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import kotlin.math.min
+import org.shujito.evaluation.R
 import org.shujito.evaluation.databinding.SuperHeroItemViewBinding
+import org.shujito.evaluation.model.Hero
 
 class SuperHeroAdapter :
 	ListAdapter<Hero, SuperHeroAdapter.SuperHeroViewHolder>(HeroDiff()) {
