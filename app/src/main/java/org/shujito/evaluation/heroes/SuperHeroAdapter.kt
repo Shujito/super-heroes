@@ -13,8 +13,11 @@ import org.shujito.evaluation.R
 import org.shujito.evaluation.databinding.SuperHeroItemViewBinding
 import org.shujito.evaluation.model.Hero
 
-class SuperHeroAdapter :
+class SuperHeroAdapter(val loadingCallback: (loading: Boolean) -> Unit = {}) :
 	ListAdapter<Hero, SuperHeroAdapter.SuperHeroViewHolder>(HeroDiff()) {
+	private var lastItem = 15
+	private var loading = false
+
 	class SuperHeroViewHolder(
 		parent: View,
 		private val binding: SuperHeroItemViewBinding = SuperHeroItemViewBinding.inflate(
@@ -53,11 +56,23 @@ class SuperHeroAdapter :
 	}
 
 	override fun getItemCount(): Int {
-		return min(super.getItemCount(), 15)
+		return min(super.getItemCount(), lastItem)
 	}
 
 	override fun onBindViewHolder(holder: SuperHeroViewHolder, position: Int) {
 		val hero = this.getItem(position)
 		holder.bind(hero)
+		// simulate infinite scrolling
+		// TODO: should load more items instead of just increasing the list count
+		if (!this.loading && position == this.itemCount - 1) {
+			this.loading = true
+			this.loadingCallback(true)
+			holder.itemView.postDelayed({
+				this.lastItem += 15
+				this.loading = false
+				this.loadingCallback(false)
+				this.notifyItemRangeChanged(position + 1, this.itemCount)
+			}, 3000)
+		}
 	}
 }

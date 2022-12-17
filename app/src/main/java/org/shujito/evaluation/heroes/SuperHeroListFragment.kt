@@ -15,6 +15,9 @@ class SuperHeroListFragment : Fragment() {
 			owner = this,
 			error = {
 				this.binding.error = it
+			},
+			listLoadingCallback = {
+				this.binding.loading = it
 			}
 		)
 	}
