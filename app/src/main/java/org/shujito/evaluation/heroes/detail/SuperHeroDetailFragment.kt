@@ -5,13 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import org.shujito.evaluation.databinding.SuperHeroDetailFragmentBinding
 
 class SuperHeroDetailFragment : Fragment() {
 	private lateinit var binding: SuperHeroDetailFragmentBinding
-	private val superHeroDetailViewModel by lazy {
-		ViewModelProvider(this)[SuperHeroDetailViewModel::class.java]
+	private val superHeroDetailDomain by lazy {
+		SuperHeroDetailDomain(
+			owner = this,
+			callback = { this.binding.hero = it },
+			error = { /* TODO: handle error message */ }
+		)
 	}
 
 	override fun onCreateView(
@@ -23,17 +26,10 @@ class SuperHeroDetailFragment : Fragment() {
 		return this.binding.getRoot()
 	}
 
-	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-		super.onViewCreated(view, savedInstanceState)
-		this.superHeroDetailViewModel.superHeroDetail.observe(this.requireActivity()) {
-			this.binding.hero = it
-		}
-	}
-
-	private fun getHeroID(): String = this.requireArguments().getString("id").toString()
 	override fun onResume() {
 		super.onResume()
-		val heroID: String = this.getHeroID()
-		this.superHeroDetailViewModel.getHero(heroID)
+		this.superHeroDetailDomain.getHero(
+			this.requireArguments().getString("id").toString()
+		)
 	}
 }

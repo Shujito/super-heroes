@@ -4,18 +4,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import org.shujito.evaluation.R
 import org.shujito.evaluation.databinding.SuperHeroListFragmentBinding
 
 class SuperHeroListFragment : Fragment() {
 	private lateinit var binding: SuperHeroListFragmentBinding
-	private var superHeroAdapter = SuperHeroAdapter()
-	private val superHeroListViewModel by lazy {
-		ViewModelProvider(this)[SuperHeroListViewModel::class.java]
+	private val superHeroDomain by lazy {
+		SuperHeroDomain(
+			owner = this,
+			error = {
+				this.binding.error = it
+			}
+		)
 	}
 
 	override fun onCreateView(
@@ -23,22 +24,19 @@ class SuperHeroListFragment : Fragment() {
 		container: ViewGroup?,
 		savedInstanceState: Bundle?
 	): View {
-		this.binding =
-			DataBindingUtil.inflate(inflater, R.layout.super_hero_list_fragment, container, false)
+		this.binding = SuperHeroListFragmentBinding.inflate(inflater)
 		return this.binding.getRoot()
 	}
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
 		this.binding.recyclerView.layoutManager = LinearLayoutManager(this.requireContext())
-		this.binding.recyclerView.adapter = this.superHeroAdapter
-		this.superHeroListViewModel.superHeores.observe(this.requireActivity()) {
-			this.superHeroAdapter.submitList(it.results)
-		}
+		this.binding.recyclerView.adapter = this.superHeroDomain.superHeroAdapter
+		this.binding.retry.setOnClickListener { this.superHeroDomain.getAllHeroes() }
 	}
 
 	override fun onResume() {
 		super.onResume()
-		this.superHeroListViewModel.getAllHeroes()
+		this.superHeroDomain.getAllHeroes()
 	}
 }

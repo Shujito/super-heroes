@@ -10,6 +10,8 @@
 			type="org.shujito.evaluation.model.Hero" />
 	</data>
 
+	<!-- TODO: add a retry button -->
+
 	<ScrollView
 		android:layout_width="match_parent"
 		android:layout_height="match_parent">

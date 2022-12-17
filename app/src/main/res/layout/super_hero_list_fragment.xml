@@ -3,6 +3,17 @@
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	xmlns:tools="http://schemas.android.com/tools">
 
+	<data>
+
+		<variable
+			name="error"
+			type="String" />
+
+		<import type="android.view.View" />
+
+		<import type="android.text.TextUtils" />
+	</data>
+
 	<androidx.constraintlayout.widget.ConstraintLayout
 		android:id="@+id/root"
 		android:layout_width="match_parent"
@@ -13,7 +24,34 @@
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
 			android:layout_marginTop="56dp"
+			android:visibility="@{ TextUtils.isEmpty( error ) ? View.VISIBLE : View.GONE }"
 			tools:itemCount="5"
-			tools:listitem="@layout/super_hero_item_view" />
+			tools:listitem="@layout/super_hero_item_view"
+			tools:visibility="gone" />
+
+		<TextView
+			android:id="@+id/label_error"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="16dp"
+			android:layout_marginEnd="16dp"
+			android:gravity="center"
+			android:textAppearance="?android:textAppearanceMedium"
+			android:visibility="@{ TextUtils.isEmpty( error ) ? View.GONE : View.VISIBLE }"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintTop_toTopOf="parent"
+			app:text="@{ error }"
+			tools:text="@string/app_name" />
+
+		<Button
+			android:id="@+id/retry"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="16dp"
+			android:layout_marginTop="16dp"
+			android:layout_marginEnd="16dp"
+			android:text="@string/retry"
+			android:visibility="@{ TextUtils.isEmpty( error ) ? View.GONE : View.VISIBLE }"
+			app:layout_constraintTop_toBottomOf="@+id/label_error" />
 	</androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -1,3 +1,4 @@
 <resources>
 	<string name="app_name">Super Heroes</string>
+	<string name="retry">Retry</string>
 </resources>
